@@ -3,6 +3,7 @@ from pathlib import Path
 import joblib
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import roc_auc_score
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / "data"
@@ -43,7 +44,7 @@ def evaluar_modelo():
     precision = precision_score(y_test, y_pred, zero_division=0)
     recall = recall_score(y_test, y_pred, zero_division=0)
     f1 = f1_score(y_test, y_pred, zero_division=0)
-
+    auc = roc_auc_score(y_test, y_pred)                # Agregado cálculo de AUC
     contenido = f"""# Métricas del modelo de churn
 
 ## Resultados principales
@@ -54,7 +55,7 @@ def evaluar_modelo():
 | Precision | {precision:.4f} |
 | Recall | {recall:.4f} |
 | F1-score | {f1:.4f} |
-
+| AUC | {auc:.4f} |      # Agregado valor de AUC
 ## Interpretación inicial
 
 Estas métricas permiten evaluar el desempeño inicial del modelo de clasificación.
@@ -68,6 +69,9 @@ Estas métricas permiten evaluar el desempeño inicial del modelo de clasificaci
 
     print("Modelo evaluado correctamente.")
     print(f"Métricas guardadas en: {METRICS_FILE}")
+    print(f"ROC-AUC: {auc:.4f}")     # Agregado impresión de AUC en consola
+
+
 
 if __name__ == "__main__":
     evaluar_modelo()

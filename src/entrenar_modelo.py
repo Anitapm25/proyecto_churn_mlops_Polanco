@@ -3,8 +3,10 @@ from pathlib import Path
 import joblib
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier  # ← NUEVO
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = BASE_DIR / "data"
@@ -33,7 +35,7 @@ def entrenar_modelo():
     modelo = Pipeline(
         steps=[
             ("escalado", StandardScaler()),
-            ("clasificador", LogisticRegression())
+            ("clasificador", LogisticRegression(C=0.1, max_iter=1000))  # qui en Modificado los Hiperparametros
         ]
     )
     modelo.fit(X, y)
@@ -45,3 +47,21 @@ def entrenar_modelo():
 
 if __name__ == "__main__":
     entrenar_modelo()
+    entrenar_random_forest()    # ← NUEVO segundo algoritmo
+
+
+# NUEVO: Función para entrenar un modelo de Random Forest
+def entrenar_random_forest():
+    """Segundo algoritmo: Random Forest"""
+    df = pd.read_csv(TRAIN_DATA)
+    X = df.drop(columns=["churn"])
+    y = df["churn"]
+    
+    modelo = RandomForestClassifier()
+    modelo.fit(X, y)
+    
+    joblib.dump(modelo, MODELS_DIR / "modelo_rf.pkl")
+    print("✅ Random Forest entrenado")
+
+
+ 
