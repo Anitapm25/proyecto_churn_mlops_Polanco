@@ -44,24 +44,24 @@ def entrenar_modelo():
 
     print("Modelo entrenado correctamente.")
     print(f"Modelo guardado en: {MODEL_FILE}")
-
-if __name__ == "__main__":
-    entrenar_modelo()
-    entrenar_random_forest()    # ← NUEVO segundo algoritmo
-
-
-# NUEVO: Función para entrenar un modelo de Random Forest
+  # NUEVO: Función para entrenar un modelo de Random Forest
 def entrenar_random_forest():
     """Segundo algoritmo: Random Forest"""
     df = pd.read_csv(TRAIN_DATA)
     X = df.drop(columns=["churn"])
     y = df["churn"]
     
-    modelo = RandomForestClassifier()
+    modelo = RandomForestClassifier(n_estimators=200, max_depth=15, random_state=42)# Modificado los Hiperparametros
     modelo.fit(X, y)
     
     joblib.dump(modelo, MODELS_DIR / "modelo_rf.pkl")
     print("✅ Random Forest entrenado")
+
+    
+if __name__ == "__main__":
+    entrenar_modelo()
+    entrenar_random_forest()    # ← NUEVO segundo algoritmo
+    print("🎉 Ambos modelos entrenados")
 
 
  

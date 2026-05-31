@@ -57,3 +57,20 @@ Este proyecto utiliza Git para registrar cambios y GitHub para respaldar el repo
 
 El uso de commits permite mantener trazabilidad sobre los cambios realizados en el código, la documentación y la estructura del proyecto.
 
+## 📊 Mejoras realizadas (Mayo 2026)
+### Algoritmos
+- Regresión Logística (base)
+- Random Forest (nuevo)
+
+### Hiperparámetros modificados
+- Random Forest: n_estimators=200, max_depth=15
+
+### Métricas
+- Accuracy, Precision, Recall, F1-score, **ROC-AUC (nueva)**
+
+### Nueva prueba de API
+- Archivo: `tests/test_api_nueva.py`
+- Ejecutar con: `python tests/test_api_nueva.py`
+
+### Autora
+Ana Luisa - Antipam25
