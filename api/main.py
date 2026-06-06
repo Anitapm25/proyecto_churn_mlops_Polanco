@@ -5,6 +5,7 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+
 BASE_DIR = Path(__file__).resolve().parents[1]
 MODEL_FILE = BASE_DIR / "models" / "modelo_churn.pkl"
 
@@ -65,3 +66,15 @@ def predict(cliente: Cliente):
         "churn_predicho": prediccion,
         "probabilidad_churn": probabilidad
     }
+
+from fastapi import FastAPI
+app = FastAPI(title="Servicio ML-Ops - Churn")
+
+@app.get("/")
+def inicio():
+    return {
+        "mensaje": "Servicio ML-Ops activo",
+        "estado": "ok",
+        "autor": "Ana Luisa Polanco Maldonado"
+    }
+
