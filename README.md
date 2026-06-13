@@ -71,6 +71,8 @@ El uso de commits permite mantener trazabilidad sobre los cambios realizados en 
 ### Nueva prueba de API
 - Archivo: `tests/test_api_nueva.py`
 - Ejecutar con: `python tests/test_api_nueva.py`
+## Mejora técnica implementada:
+- Se agregó el endpoint informativo /info, el cual permite consultar información relevante del servicio, incluyendo el     nombre del autor, la versión del modelo y las variables utilizadas para realizar las predicciones. Esta mejora facilita la identificación y trazabilidad de la API desplegada.
 
-### Autora
+### Autor
 Ana Luisa - Antipam25
