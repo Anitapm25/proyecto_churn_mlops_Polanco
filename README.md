@@ -58,6 +58,10 @@ El flujo básico será:
 <p align="center">
   <img src="docs/imagenpipeline/pipeline_mlops.png" width="250">
 </p>
+
+## Descripción del Pipeline ML-Ops
+
+Este pipeline implementa un ciclo completo y automatizado para la operación continua de modelos de machine learning en producción. Su objetivo es garantizar que los modelos no solo sean precisos durante el entrenamiento, sino que se mantengan robustos, monitoreados y actualizables frente a cambios en los datos o en el entorno.
                                           
 ## Control de versiones
 Este proyecto utiliza Git para registrar cambios y GitHub para respaldar el repositorio en la nube.
